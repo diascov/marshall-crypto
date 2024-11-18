@@ -108,6 +108,10 @@ extension CryptoCurrenciesListViewModel {
             self.error = error as? NetworkServiceError
         }
     }
+
+    func price(cryptoCurrency: CryptoCurrency, priceType: CryptoCurrency.PriceType) -> String {
+        CurrencyFormatter.price(value: cryptoCurrency.price(for: priceType), in: selectedCurrency, conversionRate: conversionRate)
+    }
 }
 
 // MARK: - Private

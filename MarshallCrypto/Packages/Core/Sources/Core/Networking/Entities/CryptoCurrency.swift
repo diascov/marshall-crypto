@@ -23,9 +23,9 @@ public struct CryptoCurrency: Identifiable, Hashable, Sendable {
     private let price: Price
 }
 
-// MARK: - Private
+// MARK: - Public
 
-private extension CryptoCurrency {
+public extension CryptoCurrency {
 
     func price(for priceType: PriceType) -> Float {
         switch priceType {
@@ -61,25 +61,6 @@ public extension CryptoCurrency {
             case .current: CryptoCurrencyStrings.priceCurrent.localized
             case .dailyChange: CryptoCurrencyStrings.dailyChange.localized
             }
-        }
-    }
-}
-
-public extension CryptoCurrency {
-
-    func price(in selectedCurrency: Currency, conversionRate: ConversionRate?, priceType: PriceType) -> String {
-        switch selectedCurrency {
-        case .usd:
-            let priceFormatted = price(for: priceType).tenDigitsPrecision
-
-            return "\(priceFormatted) \(selectedCurrency.rawValue)"
-        case .sek:
-            guard let sekConversionRate = conversionRate?.rates[.sek] else { return "-" }
-
-            let priceWithRate = price(for: priceType) * sekConversionRate
-            let priceFormatted = priceWithRate.tenDigitsPrecision
-
-            return "\(priceFormatted) \(selectedCurrency.rawValue)"
         }
     }
 }

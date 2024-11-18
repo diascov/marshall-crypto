@@ -40,7 +40,7 @@ import Core
 extension CryptoCurrencyViewModel {
 
     func price(priceType: CryptoCurrency.PriceType) -> String {
-        cryptoCurrency.price(in: selectedCurrency, conversionRate: conversionRate, priceType: priceType)
+        CurrencyFormatter.price(value: cryptoCurrency.price(for: priceType), in: selectedCurrency, conversionRate: conversionRate)
     }
 
     func setFavorite() {

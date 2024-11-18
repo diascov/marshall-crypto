@@ -70,7 +70,7 @@ private extension CryptoCurrenciesListView {
                         Text(viewModel.pricesCurrencyToggleText)
                             .foregroundStyle(Color.textPrimary)
                             .lineLimit(1)
-                            .minimumScaleFactor(0.5)
+                            .minimumScaleFactor(0.8)
                         Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
                             .tint(Color.textAccent)
                     }
@@ -95,7 +95,7 @@ private extension CryptoCurrenciesListView {
     }
 
     func item(for cryptoCurrency: CryptoCurrency) -> some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 16) {
             AsyncImage(url: cryptoCurrency.imageURL) { image in
                 image
                     .resizable()
@@ -104,14 +104,23 @@ private extension CryptoCurrenciesListView {
                 ProgressView()
             }
 
-            Text(cryptoCurrency.name)
-                .foregroundStyle(Color.textPrimary)
-            Spacer()
-            Text(cryptoCurrency.price(in: viewModel.selectedCurrency,
-                                      conversionRate: viewModel.conversionRate,
-                                      priceType: .current)
-            )
+            ViewThatFits {
+                HStack(spacing: 8) {
+                    Text(cryptoCurrency.name)
+                    Spacer()
+                    Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
+
+                }
+
+                VStack(alignment: .leading) {
+                    Text(cryptoCurrency.name)
+                    Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
+                }
+
+            }
             .foregroundStyle(Color.textPrimary)
+            .lineLimit(1)
+            .minimumScaleFactor(0.8)
         }
     }
 
