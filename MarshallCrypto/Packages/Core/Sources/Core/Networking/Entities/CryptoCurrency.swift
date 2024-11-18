@@ -5,7 +5,7 @@
 //  Created by Dmitrii Iascov on 2024-11-17.
 //
 
-import Foundation
+import SwiftUI
 
 public struct CryptoCurrency: Identifiable, Hashable, Sendable {
 
@@ -26,6 +26,22 @@ public struct CryptoCurrency: Identifiable, Hashable, Sendable {
 // MARK: - Public
 
 public extension CryptoCurrency {
+
+    var arrowImage: Image {
+        switch price.dailyChange {
+        case let change where change > 0: .arrowUp
+        case let change where change < 0: .arrowDown
+        default: .arrowLeftArrowRight
+        }
+    }
+
+    var arrowColor: Color {
+        switch price.dailyChange {
+        case let change where change > 0: .green
+        case let change where change < 0: .red
+        default: .gray
+        }
+    }
 
     func price(for priceType: PriceType) -> Float {
         switch priceType {

@@ -109,14 +109,22 @@ private extension CryptoCurrenciesListView {
                     Text(cryptoCurrency.name)
                     Spacer()
                     Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
-
+                    cryptoCurrency.arrowImage
+                        .resizable()
+                        .frame(width: 8, height: 16)
+                        .foregroundStyle(cryptoCurrency.arrowColor)
                 }
 
                 VStack(alignment: .leading) {
                     Text(cryptoCurrency.name)
-                    Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
+                    HStack(spacing: 8) {
+                        Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
+                        cryptoCurrency.arrowImage
+                            .resizable()
+                            .frame(width: 8, height: 16)
+                            .foregroundStyle(cryptoCurrency.arrowColor)
+                    }
                 }
-
             }
             .foregroundStyle(Color.textPrimary)
             .lineLimit(1)
