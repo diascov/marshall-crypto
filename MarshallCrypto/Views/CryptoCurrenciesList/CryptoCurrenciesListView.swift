@@ -109,7 +109,7 @@ private extension CryptoCurrenciesListView {
             Spacer()
             Text(cryptoCurrency.price(in: viewModel.selectedCurrency,
                                       conversionRate: viewModel.conversionRate,
-                                      priceType: .high)
+                                      priceType: .current)
             )
             .foregroundStyle(Color.textPrimary)
         }
