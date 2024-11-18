@@ -1,5 +1,5 @@
 //
-//  CurrenciesListView.swift
+//  CryptoCurrenciesListView.swift
 //  Marshall Crypto
 //
 //  Created by Dmitrii Iascov on 2024-11-17.
@@ -8,16 +8,16 @@
 import SwiftUI
 import Core
 
-struct CurrenciesListView: View {
+struct CryptoCurrenciesListView: View {
 
     // MARK: - Private properties
 
     @State private var navigationPath: [NavigationPath] = []
-    @State private var viewModel: CurrenciesListViewModel
+    @State private var viewModel: CryptoCurrenciesListViewModel
 
     // MARK: - Init
 
-    init(viewModel: CurrenciesListViewModel = CurrenciesListViewModel()) {
+    init(viewModel: CryptoCurrenciesListViewModel = CryptoCurrenciesListViewModel()) {
         _viewModel = State(wrappedValue: viewModel)
     }
 
@@ -27,7 +27,9 @@ struct CurrenciesListView: View {
                 .navigationTitle(viewModel.titleText)
                 .navigationDestination(for: NavigationPath.self) { destination in
                     if case .cryptoCurrency(let cryptoCurrency) = destination {
-                        CurrencyView(viewModel: CurrencyViewModel(cryptoCurrency: cryptoCurrency))
+                        CryptoCurrencyView(viewModel: CryptoCurrencyViewModel(cryptoCurrency: cryptoCurrency,
+                                                                              selectedCurrency: viewModel.selectedCurrency,
+                                                                              conversionRate: viewModel.conversionRate))
                     }
                 }
                 .taskOnAppear {
@@ -55,29 +57,27 @@ struct CurrenciesListView: View {
 
 // MARK: - Views
 
-private extension CurrenciesListView {
+private extension CryptoCurrenciesListView {
 
     var currenciesList: some View {
-        VStack {
-            List {
-                Section {
-                    if viewModel.shouldShowPricesToggle {
-                        HStack(spacing: 8) {
-                            ProgressView()
-                                .opacity(viewModel.isLoadingConversionRate ? 1 : 0)
-                            Text(viewModel.pricesCurrencyToggleText)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                            Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
-                        }
+        List {
+            Section {
+                if viewModel.shouldShowPricesToggle {
+                    HStack(spacing: 8) {
+                        ProgressView()
+                            .opacity(viewModel.isLoadingConversionRate ? 1 : 0)
+                        Text(viewModel.pricesCurrencyToggleText)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5)
+                        Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
                     }
                 }
+            }
 
-                Section {
-                    ForEach(viewModel.searchedCryptoCurrencies) { cryptoCurrency in
-                        NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
-                            item(for: cryptoCurrency)
-                        }
+            Section {
+                ForEach(viewModel.searchedCryptoCurrencies) { cryptoCurrency in
+                    NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
+                        item(for: cryptoCurrency)
                     }
                 }
             }
@@ -96,7 +96,9 @@ private extension CurrenciesListView {
 
             Text(cryptoCurrency.name)
             Spacer()
-            Text(cryptoCurrency.calculatePrice(in: viewModel.selectedCurrency, conversionRate: viewModel.conversionRate))
+            Text(cryptoCurrency.price(in: viewModel.selectedCurrency,
+                                      conversionRate: viewModel.conversionRate,
+                                      priceType: .high))
         }
     }
 
@@ -122,9 +124,9 @@ private extension CurrenciesListView {
         }
     }
 
-    let viewModel = CurrenciesListViewModel(networkService: NetworkServiceMock())
+    let viewModel = CryptoCurrenciesListViewModel(networkService: NetworkServiceMock())
 
-    return CurrenciesListView(viewModel: viewModel)
+    return CryptoCurrenciesListView(viewModel: viewModel)
         .environment(\.locale, Locale(identifier: "sv_SE"))
 }
 #endif

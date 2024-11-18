@@ -1,5 +1,5 @@
 //
-//  CurrenciesListViewModel.swift
+//  CryptoCurrenciesListViewModel.swift
 //  Marshall Crypto
 //
 //  Created by Dmitrii Iascov on 2024-11-17.
@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-@MainActor @Observable final class CurrenciesListViewModel {
+@MainActor @Observable final class CryptoCurrenciesListViewModel {
 
     // MARK: - Public properties
 
@@ -50,11 +50,11 @@ import Core
     private(set) var selectedCurrency: Currency
     private(set) var conversionRate: ConversionRate?
 
-    let titleText = CurrenciesListStrings.title.localized
+    let titleText = CryptoCurrenciesListStrings.title.localized
     let okText = CommonStrings.ok.localized
-    let contentUnavailableTitleText = CurrenciesListStrings.contentUnavailableTitle.localized
-    let contentUnavailableMessageText = CurrenciesListStrings.contentUnavailableMessage.localized
-    let pricesCurrencyToggleText = CurrenciesListStrings.pricesCurrencyToggle.localized
+    let contentUnavailableTitleText = CryptoCurrenciesListStrings.contentUnavailableTitle.localized
+    let contentUnavailableMessageText = CryptoCurrenciesListStrings.contentUnavailableMessage.localized
+    let pricesCurrencyToggleText = CryptoCurrenciesListStrings.pricesCurrencyToggle.localized
 
     // MARK: - Private propertries
 
@@ -75,7 +75,7 @@ import Core
 
 // MARK: - Public
 
-extension CurrenciesListViewModel {
+extension CryptoCurrenciesListViewModel {
 
     func getCurrenciesList() async {
         defer {
@@ -112,7 +112,7 @@ extension CurrenciesListViewModel {
 
 // MARK: - Private
 
-private extension CurrenciesListViewModel {
+private extension CryptoCurrenciesListViewModel {
 
     func updateSelectedCurrency() {
         selectedCurrency = shouldShowPricesInSEK ? .sek : .usd
@@ -122,7 +122,7 @@ private extension CurrenciesListViewModel {
 
 // MARK: - Models
 
-extension CurrenciesListViewModel {
+extension CryptoCurrenciesListViewModel {
 
     enum CurrenciesListOverlayType {
         case progress

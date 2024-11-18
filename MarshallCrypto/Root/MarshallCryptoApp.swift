@@ -11,7 +11,7 @@ import SwiftUI
 
     var body: some Scene {
         WindowGroup {
-            CurrenciesListView()
+            CryptoCurrenciesListView()
         }
     }
 }
