@@ -26,10 +26,6 @@ struct CryptoCurrencyView: View {
                 image
                     .resizable()
                     .frame(maxWidth: 100, maxHeight: 100)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 50)
-                            .stroke(Color.backgroundSecondary, lineWidth: 4)
-                    }
             } placeholder: {
                 Image.photoCircleFill
                     .resizable()
@@ -43,6 +39,10 @@ struct CryptoCurrencyView: View {
             priceItem(priceType: .dailyChange)
 
             Spacer()
+        }
+        .background {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
         }
         .navigationTitle(viewModel.titleText)
         .toolbar {
@@ -71,6 +71,7 @@ private extension CryptoCurrencyView {
             Spacer()
             Text(viewModel.price(priceType: priceType))
         }
+        .foregroundStyle(Color.textPrimary)
         .padding(.horizontal, 16)
     }
 }

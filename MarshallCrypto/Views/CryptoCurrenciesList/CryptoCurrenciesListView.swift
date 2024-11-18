@@ -52,6 +52,7 @@ struct CryptoCurrenciesListView: View {
                     Text(error.failureReason ?? "")
                 }
         }
+        .tint(Color.textAccent)
     }
 }
 
@@ -67,12 +68,15 @@ private extension CryptoCurrenciesListView {
                         ProgressView()
                             .opacity(viewModel.isLoadingConversionRate ? 1 : 0)
                         Text(viewModel.pricesCurrencyToggleText)
+                            .foregroundStyle(Color.textPrimary)
                             .lineLimit(1)
                             .minimumScaleFactor(0.5)
                         Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
+                            .tint(Color.textAccent)
                     }
                 }
             }
+            .listRowBackground(Color.backgroundSecondary)
 
             Section {
                 ForEach(viewModel.searchedCryptoCurrencies) { cryptoCurrency in
@@ -81,6 +85,12 @@ private extension CryptoCurrenciesListView {
                     }
                 }
             }
+            .listRowBackground(Color.backgroundSecondary)
+        }
+        .scrollContentBackground(.hidden)
+        .background {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
         }
     }
 
@@ -95,10 +105,13 @@ private extension CryptoCurrenciesListView {
             }
 
             Text(cryptoCurrency.name)
+                .foregroundStyle(Color.textPrimary)
             Spacer()
             Text(cryptoCurrency.price(in: viewModel.selectedCurrency,
                                       conversionRate: viewModel.conversionRate,
-                                      priceType: .high))
+                                      priceType: .high)
+            )
+            .foregroundStyle(Color.textPrimary)
         }
     }
 
