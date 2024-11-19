@@ -9,14 +9,17 @@ import Foundation
 
 public protocol Localizable {
     var rawValue: String { get }
-    var localized: String { get }
+    func localized(arguments: CVarArg...) -> String
 }
 
 public extension Localizable {
-    var localized: String {
-        String(localized: String.LocalizationValue(rawValue),
-               table: String(describing: type(of: self)).replacingOccurrences(of: "Strings", with: ""),
-               bundle: .main)
+
+    func localized(arguments: CVarArg...) -> String {
+        let key = String.LocalizationValue(rawValue)
+        let tableName = String(describing: type(of: self)).replacingOccurrences(of: "Strings", with: "")
+        let format = String(localized: key, table: tableName, bundle: .module)
+
+        return String(format: format, arguments: arguments)
     }
 }
 
@@ -37,6 +40,12 @@ public enum CryptoCurrenciesListStrings: String, Localizable {
     case contentUnavailableTitle
     case contentUnavailableMessage
     case pricesCurrencyToggle
+    case currentPrices
+    case settings
+    case sortBy
+    case name
+    case rank
+    case currentPrice
 }
 
 public enum CryptoCurrencyStrings: String, Localizable {

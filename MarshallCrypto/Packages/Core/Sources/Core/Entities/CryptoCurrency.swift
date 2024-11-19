@@ -72,10 +72,10 @@ public extension CryptoCurrency {
 
         public var title: String {
             switch self {
-            case .high: CryptoCurrencyStrings.priceHigh.localized
-            case .low: CryptoCurrencyStrings.priceLow.localized
-            case .current: CryptoCurrencyStrings.priceCurrent.localized
-            case .dailyChange: CryptoCurrencyStrings.dailyChange.localized
+            case .high: CryptoCurrencyStrings.priceHigh.localized()
+            case .low: CryptoCurrencyStrings.priceLow.localized()
+            case .current: CryptoCurrencyStrings.priceCurrent.localized()
+            case .dailyChange: CryptoCurrencyStrings.dailyChange.localized()
             }
         }
     }
@@ -112,7 +112,7 @@ extension CryptoCurrency: Decodable {
 
         let lastUpdatedString = try container.decode(String.self, forKey: .lastUpdated)
 
-        lastUpdated = lastUpdatedString.asIsoDate
+        lastUpdated = DateFormatter.isoDate(from: lastUpdatedString)
 
         let priceCurrent = try container.decode(Float.self, forKey: .priceCurrent)
         let priceHigh = try container.decode(Float.self, forKey: .priceHigh)
@@ -129,21 +129,21 @@ public extension CryptoCurrency {
                                          name: "Bitcoin",
                                          symbol: "btc",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
-                                         rank: 1,
+                                         rank: 3,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 1000.8393123, low: 50.3232, dailyChange: 333.3131))
+                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 1000.8393123, low: 50.3232, dailyChange: 0))
     static let preview1 = CryptoCurrency(id: "ethereum",
                                          name: "Ethereum",
                                          symbol: "eth",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"),
-                                         rank: 2,
+                                         rank: 1,
                                          lastUpdated: Date(),
                                          price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 111.111, low: 11.11, dailyChange: 1111.1111))
     static let preview2 = CryptoCurrency(id: "tether",
                                          name: "Tether",
                                          symbol: "usdt",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661"),
-                                         rank: 3,
+                                         rank: 2,
                                          lastUpdated: Date(),
                                          price: CryptoCurrency.Price(current: 1.0612271837e-7, high: 131.3213, low: 1.2, dailyChange: 1))
 }

@@ -33,6 +33,11 @@ struct CryptoCurrencyView: View {
             }
             .padding()
 
+            Text(CryptoCurrencyStrings.lastUpdated.localized(arguments: viewModel.lastUpdated))
+                .font(.headline)
+                .foregroundStyle(Color.textPrimary)
+                .padding(.horizontal, 16)
+
             priceItem(priceType: .current)
             priceItem(priceType: .high)
             priceItem(priceType: .low)

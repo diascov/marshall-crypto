@@ -19,16 +19,16 @@ extension NetworkServiceError: LocalizedError {
 
     public var errorDescription: String? {
         switch self {
-        case .wrongURL: ErrorStrings.wrongUrlTitle.localized
-        case .wrongResponse: ErrorStrings.wrongResponseTitle.localized
+        case .wrongURL: ErrorStrings.wrongUrlTitle.localized()
+        case .wrongResponse: ErrorStrings.wrongResponseTitle.localized()
         case .custom(let error): error.localizedDescription
         }
     }
 
     public var failureReason: String? {
         switch self {
-        case .wrongURL: ErrorStrings.wrongUrlMessage.localized
-        case .wrongResponse: ErrorStrings.wrongResponseMessage.localized
+        case .wrongURL: ErrorStrings.wrongUrlMessage.localized()
+        case .wrongResponse: ErrorStrings.wrongResponseMessage.localized()
         case .custom(let error): error.localizedDescription
         }
     }

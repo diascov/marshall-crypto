@@ -14,6 +14,7 @@ public extension Image {
     static let arrowUp = Icon.arrowUp.image
     static let arrowDown = Icon.arrowDown.image
     static let arrowLeftArrowRight = Icon.arrowLeftArrowRight.image
+    static let arrowUpArrowDown = Icon.arrowUpArrowDown.image
 }
 
 private enum Icon: String {
@@ -23,6 +24,7 @@ private enum Icon: String {
     case arrowUp = "arrow.up"
     case arrowDown = "arrow.down"
     case arrowLeftArrowRight = "arrow.left.arrow.right"
+    case arrowUpArrowDown = "arrow.up.arrow.down"
 
     var image: Image {
         Image(systemName: rawValue)

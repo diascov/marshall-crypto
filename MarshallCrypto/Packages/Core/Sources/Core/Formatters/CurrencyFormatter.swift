@@ -16,9 +16,8 @@ public struct CurrencyFormatter {
         formatter.numberStyle = .currency
         formatter.currencyCode = selectedCurrency.rawValue
 
-        // Always display 2 decimal places
         formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 8 // Allow up to 8 decimals for very small numbers
+        formatter.maximumFractionDigits = 8
 
         let currencyValue = value * (conversionRate?.rates[selectedCurrency] ?? 1)
 

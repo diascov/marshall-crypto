@@ -37,7 +37,7 @@ struct CryptoCurrenciesListView: View {
                     await viewModel.getConversionRate()
                 }
                 .refreshable(action: viewModel.getCurrenciesList)
-                .searchable(text: $viewModel.searchText)
+                .searchable(text: $viewModel.searchText, isPresented: $viewModel.isSearching)
                 .overlay {
                     switch viewModel.overlayType {
                     case .progress: ProgressView()
@@ -63,7 +63,7 @@ private extension CryptoCurrenciesListView {
     var currenciesList: some View {
         List {
             Section {
-                if viewModel.shouldShowPricesToggle {
+                if viewModel.shouldShowComponents {
                     HStack(spacing: 8) {
                         ProgressView()
                             .opacity(viewModel.isLoadingConversionRate ? 1 : 0)
@@ -74,6 +74,27 @@ private extension CryptoCurrenciesListView {
                         Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
                             .tint(Color.textAccent)
                     }
+
+                    HStack(spacing: 8) {
+                        Text(viewModel.sortByText)
+                            .foregroundStyle(Color.textPrimary)
+                            .padding(.leading, 28)
+                        Spacer()
+                        Picker("", selection: $viewModel.sortOption) {
+                            ForEach(CryptoCurrenciesListViewModel.CryptoCurrencySortOption.allCases, id: \.self) { option in
+                                Text(option.title)
+                            }
+                        }
+                        .fixedSize()
+                        .foregroundStyle(Color.textPrimary)
+                        .tint(Color.textAccent)
+                        .pickerStyle(.menu)
+                    }
+                }
+            } header: {
+                if viewModel.shouldShowComponents {
+                    Text(viewModel.settingsText)
+                        .foregroundStyle(Color.textAccent)
                 }
             }
             .listRowBackground(Color.backgroundSecondary)
@@ -83,6 +104,11 @@ private extension CryptoCurrenciesListView {
                     NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
                         item(for: cryptoCurrency)
                     }
+                }
+            } header: {
+                if viewModel.shouldShowComponents {
+                    Text(viewModel.currentPricesText)
+                        .foregroundStyle(Color.textAccent)
                 }
             }
             .listRowBackground(Color.backgroundSecondary)
@@ -104,25 +130,22 @@ private extension CryptoCurrenciesListView {
                 ProgressView()
             }
 
+            cryptoCurrency.arrowImage
+                .resizable()
+                .frame(width: 8, height: 16)
+                .foregroundStyle(cryptoCurrency.arrowColor)
+
             ViewThatFits {
                 HStack(spacing: 8) {
                     Text(cryptoCurrency.name)
                     Spacer()
                     Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
-                    cryptoCurrency.arrowImage
-                        .resizable()
-                        .frame(width: 8, height: 16)
-                        .foregroundStyle(cryptoCurrency.arrowColor)
                 }
 
                 VStack(alignment: .leading) {
                     Text(cryptoCurrency.name)
                     HStack(spacing: 8) {
                         Text(viewModel.price(cryptoCurrency: cryptoCurrency, priceType: .current))
-                        cryptoCurrency.arrowImage
-                            .resizable()
-                            .frame(width: 8, height: 16)
-                            .foregroundStyle(cryptoCurrency.arrowColor)
                     }
                 }
             }

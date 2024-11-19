@@ -20,4 +20,5 @@ public struct UserDefaultsController {
 
 public enum UserDefaultsKey: String {
     case selectedCurrency
+    case sortOption
 }

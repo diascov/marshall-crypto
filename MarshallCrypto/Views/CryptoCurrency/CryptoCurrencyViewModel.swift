@@ -16,6 +16,10 @@ import Core
         cryptoCurrency.symbol.uppercased()
     }
 
+    var lastUpdated: String {
+        DateFormatter.isoString(from: cryptoCurrency.lastUpdated)
+    }
+
     var imageURL: URL? {
         cryptoCurrency.imageURL
     }
