@@ -32,6 +32,9 @@ public enum ErrorStrings: String, Localizable {
     case wrongUrlMessage
     case wrongResponseTitle
     case wrongResponseMessage
+    case unhandledTitle
+    case missingProfileTitle
+    case missingProfileMessage
 }
 
 

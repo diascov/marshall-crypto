@@ -33,10 +33,10 @@ struct CryptoCurrenciesListView: View {
                     }
                 }
                 .taskOnAppear {
-                    await viewModel.getCurrenciesList()
-                    await viewModel.getConversionRate()
+                    await viewModel.fetchCryptoCurrenciesList()
+                    await viewModel.fetchConversionRate()
                 }
-                .refreshable(action: viewModel.getCurrenciesList)
+                .refreshable(action: viewModel.fetchCryptoCurrenciesList)
                 .searchable(text: $viewModel.searchText, isPresented: $viewModel.isSearching)
                 .overlay {
                     switch viewModel.overlayType {
@@ -52,7 +52,7 @@ struct CryptoCurrenciesListView: View {
                     Text(error.failureReason ?? "")
                 }
         }
-        .tint(Color.textAccent)
+        .tint(Color.accent)
     }
 }
 
@@ -72,7 +72,7 @@ private extension CryptoCurrenciesListView {
                             .lineLimit(1)
                             .minimumScaleFactor(0.8)
                         Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
-                            .tint(Color.textAccent)
+                            .tint(Color.accent)
                     }
 
                     HStack(spacing: 8) {
@@ -87,14 +87,14 @@ private extension CryptoCurrenciesListView {
                         }
                         .fixedSize()
                         .foregroundStyle(Color.textPrimary)
-                        .tint(Color.textAccent)
+                        .tint(Color.accent)
                         .pickerStyle(.menu)
                     }
                 }
             } header: {
                 if viewModel.shouldShowComponents {
                     Text(viewModel.settingsText)
-                        .foregroundStyle(Color.textAccent)
+                        .foregroundStyle(Color.accent)
                 }
             }
             .listRowBackground(Color.backgroundSecondary)
@@ -108,7 +108,7 @@ private extension CryptoCurrenciesListView {
             } header: {
                 if viewModel.shouldShowComponents {
                     Text(viewModel.currentPricesText)
-                        .foregroundStyle(Color.textAccent)
+                        .foregroundStyle(Color.accent)
                 }
             }
             .listRowBackground(Color.backgroundSecondary)
@@ -164,22 +164,7 @@ private extension CryptoCurrenciesListView {
 
 #if DEBUG
 #Preview {
-    struct NetworkServiceMock: NetworkServiceAPI {
-
-        func getCryptoCurrenciesList() async throws -> [CryptoCurrency] {
-            try await Task.sleep(nanoseconds: 1_000_000_000)
-            return [.preview0, .preview1, .preview2].shuffled()
-        }
-        
-        func getConversionRate() async throws -> ConversionRate {
-            try await Task.sleep(nanoseconds: 1_000_000_000)
-            return .preview
-        }
-    }
-
     let viewModel = CryptoCurrenciesListViewModel(networkService: NetworkServiceMock())
-
-    return CryptoCurrenciesListView(viewModel: viewModel)
-        .environment(\.locale, Locale(identifier: "sv_SE"))
+    CryptoCurrenciesListView(viewModel: viewModel)
 }
 #endif

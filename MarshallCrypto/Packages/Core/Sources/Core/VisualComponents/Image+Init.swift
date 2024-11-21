@@ -15,6 +15,7 @@ public extension Image {
     static let arrowDown = Icon.arrowDown.image
     static let arrowLeftArrowRight = Icon.arrowLeftArrowRight.image
     static let arrowUpArrowDown = Icon.arrowUpArrowDown.image
+    static let signInWithGoogle = CoreImage.signInWithGoogle.image
 }
 
 private enum Icon: String {
@@ -28,5 +29,13 @@ private enum Icon: String {
 
     var image: Image {
         Image(systemName: rawValue)
+    }
+}
+
+private enum CoreImage: String {
+    case signInWithGoogle = "sign_in_with_google"
+
+    var image: Image {
+        Image(rawValue, bundle: .module)
     }
 }

@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main struct MarshallCryptoApp: App {
 
+    // MARK: - Private properties
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+
+    // MARK: - Init
+
+    init() {
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            CryptoCurrenciesListView()
+            RootView(viewModel: RootViewModel())
+                .environment(appDelegate)
         }
     }
 }

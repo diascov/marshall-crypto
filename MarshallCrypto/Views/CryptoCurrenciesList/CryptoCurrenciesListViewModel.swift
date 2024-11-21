@@ -100,7 +100,7 @@ import Core
 
 extension CryptoCurrenciesListViewModel {
 
-    func getCurrenciesList() async {
+    func fetchCryptoCurrenciesList() async {
         defer {
             isInitialLoad = false
             isPresentedAlert = error != nil
@@ -109,13 +109,13 @@ extension CryptoCurrenciesListViewModel {
         error = nil
 
         do {
-            cryptoCurrencies = try await networkService.getCryptoCurrenciesList()
+            cryptoCurrencies = try await networkService.fetchCryptoCurrenciesList()
         } catch {
             self.error = error as? NetworkServiceError
         }
     }
 
-    func getConversionRate() async {
+    func fetchConversionRate() async {
         defer {
             isLoadingConversionRate = false
             isPresentedAlert = error != nil
@@ -126,7 +126,7 @@ extension CryptoCurrenciesListViewModel {
         isLoadingConversionRate = true
 
         do {
-            conversionRate = try await networkService.getConversionRate()
+            conversionRate = try await networkService.fetchConversionRate()
         } catch {
             self.error = error as? NetworkServiceError
         }

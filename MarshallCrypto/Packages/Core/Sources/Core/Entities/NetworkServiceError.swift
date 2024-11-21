@@ -10,7 +10,10 @@ import Foundation
 public enum NetworkServiceError {
     case wrongURL
     case wrongResponse
-    case custom(Error)
+    case missingProfile
+
+    case custom(Error) // to catch default errors
+    case unhandled // placeholder case, there should not be such case in perfect world
 }
 
 // MARK: - LocalizedError
@@ -21,7 +24,9 @@ extension NetworkServiceError: LocalizedError {
         switch self {
         case .wrongURL: ErrorStrings.wrongUrlTitle.localized()
         case .wrongResponse: ErrorStrings.wrongResponseTitle.localized()
+        case .missingProfile: ErrorStrings.missingProfileTitle.localized()
         case .custom(let error): error.localizedDescription
+        case .unhandled: ErrorStrings.unhandledTitle.localized()
         }
     }
 
@@ -29,7 +34,9 @@ extension NetworkServiceError: LocalizedError {
         switch self {
         case .wrongURL: ErrorStrings.wrongUrlMessage.localized()
         case .wrongResponse: ErrorStrings.wrongResponseMessage.localized()
-        case .custom(let error): error.localizedDescription
+        case .missingProfile: ErrorStrings.missingProfileMessage.localized()
+        case .custom: nil
+        case .unhandled: nil
         }
     }
 }

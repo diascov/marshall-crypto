@@ -21,6 +21,28 @@ struct CryptoCurrencyView: View {
     }
 
     var body: some View {
+        content
+            .navigationTitle(viewModel.titleText)
+            .toolbar {
+                ToolbarItemGroup {
+                    Button {
+                        viewModel.setFavorite()
+                    } label: {
+                        Image.star
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.gold)
+                    }
+                }
+            }
+    }
+}
+
+// MARK: - Views
+
+private extension CryptoCurrencyView {
+
+    var content: some View {
         VStack(spacing: 16) {
             AsyncImage(url: viewModel.imageURL) { image in
                 image
@@ -49,25 +71,7 @@ struct CryptoCurrencyView: View {
             Color.backgroundPrimary
                 .ignoresSafeArea()
         }
-        .navigationTitle(viewModel.titleText)
-        .toolbar {
-            ToolbarItemGroup {
-                Button {
-                    viewModel.setFavorite()
-                } label: {
-                    Image.star
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.gold)
-                }
-            }
-        }
     }
-}
-
-// MARK: - Views
-
-private extension CryptoCurrencyView {
 
     func priceItem(priceType: CryptoCurrency.PriceType) -> some View {
         HStack {
@@ -89,4 +93,3 @@ private extension CryptoCurrencyView {
     }
 }
 #endif
-

@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		722202872CEA79EF00EED98C /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 722202862CEA79EF00EED98C /* Core */; };
+		724014A62CEE586100D8F0BD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 724014A52CEE586100D8F0BD /* GoogleSignIn */; };
+		724014A82CEE586100D8F0BD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 724014A72CEE586100D8F0BD /* GoogleSignInSwift */; };
+		724014C32CEF1F4800D8F0BD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C22CEF1F4800D8F0BD /* FirebaseAuth */; };
+		724014C52CEF1F4800D8F0BD /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C42CEF1F4800D8F0BD /* FirebaseCore */; };
+		724014C72CEF1F4800D8F0BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C62CEF1F4800D8F0BD /* FirebaseDatabase */; };
+		724014C92CEF1F4800D8F0BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C82CEF1F4800D8F0BD /* FirebaseFirestore */; };
+		724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 724014CA2CEF1F4800D8F0BD /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		722201B42CE3EEAE00EED98C /* Marshall Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marshall Crypto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Marshall-Crypto-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -40,7 +48,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724014C72CEF1F4800D8F0BD /* FirebaseDatabase in Frameworks */,
+				724014A82CEE586100D8F0BD /* GoogleSignInSwift in Frameworks */,
+				724014C52CEF1F4800D8F0BD /* FirebaseCore in Frameworks */,
+				724014A62CEE586100D8F0BD /* GoogleSignIn in Frameworks */,
 				722202872CEA79EF00EED98C /* Core in Frameworks */,
+				724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */,
+				724014C32CEF1F4800D8F0BD /* FirebaseAuth in Frameworks */,
+				724014C92CEF1F4800D8F0BD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +65,7 @@
 		722201AB2CE3EEAE00EED98C = {
 			isa = PBXGroup;
 			children = (
+				724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */,
 				722201B62CE3EEAE00EED98C /* MarshallCrypto */,
 				722201B52CE3EEAE00EED98C /* Products */,
 			);
@@ -84,6 +100,13 @@
 			name = "Marshall Crypto";
 			packageProductDependencies = (
 				722202862CEA79EF00EED98C /* Core */,
+				724014A52CEE586100D8F0BD /* GoogleSignIn */,
+				724014A72CEE586100D8F0BD /* GoogleSignInSwift */,
+				724014C22CEF1F4800D8F0BD /* FirebaseAuth */,
+				724014C42CEF1F4800D8F0BD /* FirebaseCore */,
+				724014C62CEF1F4800D8F0BD /* FirebaseDatabase */,
+				724014C82CEF1F4800D8F0BD /* FirebaseFirestore */,
+				724014CA2CEF1F4800D8F0BD /* FirebaseStorage */,
 			);
 			productName = "Marshall Crypto";
 			productReference = 722201B42CE3EEAE00EED98C /* Marshall Crypto.app */;
@@ -114,6 +137,10 @@
 			);
 			mainGroup = 722201AB2CE3EEAE00EED98C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				724014A42CEE586100D8F0BD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 722201B52CE3EEAE00EED98C /* Products */;
 			projectDirPath = "";
@@ -277,6 +304,7 @@
 				DEVELOPMENT_TEAM = TA22A7FUU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Marshall-Crypto-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -311,6 +339,7 @@
 				DEVELOPMENT_TEAM = TA22A7FUU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Marshall-Crypto-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -357,10 +386,64 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		724014A42CEE586100D8F0BD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = exactVersion;
+				version = 8.0.0;
+			};
+		};
+		724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 11.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		722202862CEA79EF00EED98C /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
+		};
+		724014A52CEE586100D8F0BD /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014A42CEE586100D8F0BD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		724014A72CEE586100D8F0BD /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014A42CEE586100D8F0BD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		724014C22CEF1F4800D8F0BD /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		724014C42CEF1F4800D8F0BD /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		724014C62CEF1F4800D8F0BD /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		724014C82CEF1F4800D8F0BD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		724014CA2CEF1F4800D8F0BD /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>339307724087-mpo9um7n2sd9u68emsso8slnip45hnch.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.339307724087-mpo9um7n2sd9u68emsso8slnip45hnch</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDyzU7XmWDtouyYbSspVD35R0g4Iau2hdA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>339307724087</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.diascov.marshall-crypto</string>
+	<key>PROJECT_ID</key>
+	<string>marshall-crypto</string>
+	<key>STORAGE_BUCKET</key>
+	<string>marshall-crypto.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:339307724087:ios:2cb4ba055d4ac96d20eeb2</string>
+	<key>DATABASE_URL</key>
+	<string>https://marshall-crypto-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
