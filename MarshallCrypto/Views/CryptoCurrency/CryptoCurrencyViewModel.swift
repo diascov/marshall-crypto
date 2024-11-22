@@ -5,7 +5,7 @@
 //  Created by Dmitrii Iascov on 2024-11-17.
 //
 
-import Foundation
+import SwiftUI
 import Core
 
 @MainActor @Observable final class CryptoCurrencyViewModel {
@@ -22,6 +22,10 @@ import Core
 
     var imageURL: URL? {
         cryptoCurrency.imageURL
+    }
+
+    var cryptoCurrencyID: String {
+        cryptoCurrency.id
     }
 
     // MARK: - Private properties
@@ -47,7 +51,9 @@ extension CryptoCurrencyViewModel {
         CurrencyFormatter.price(value: cryptoCurrency.price(for: priceType), in: selectedCurrency, conversionRate: conversionRate)
     }
 
-    func setFavorite() {
-        // TODO
+    func favoriteImage(from profile: Profile?) -> Image {
+        guard let profile else { return .star }
+
+        return profile.isFavorite(cryptoCurrency: cryptoCurrency) == true ? .starFill : .star
     }
 }

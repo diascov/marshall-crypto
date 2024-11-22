@@ -12,6 +12,7 @@ struct CryptoCurrencyView: View {
 
     // MARK: - Private properties
 
+    @Environment(RootViewModel.self) private var rootViewModel
     @State private var viewModel: CryptoCurrencyViewModel
 
     // MARK: - Init
@@ -26,9 +27,9 @@ struct CryptoCurrencyView: View {
             .toolbar {
                 ToolbarItemGroup {
                     Button {
-                        viewModel.setFavorite()
+                        rootViewModel.toggleFavorite(id: viewModel.cryptoCurrencyID)
                     } label: {
-                        Image.star
+                        viewModel.favoriteImage(from: rootViewModel.profile)
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundStyle(Color.gold)
@@ -90,6 +91,7 @@ private extension CryptoCurrencyView {
     let viewModel = CryptoCurrencyViewModel(cryptoCurrency: .preview0, selectedCurrency: .usd, conversionRate: .preview)
     return NavigationStack {
         CryptoCurrencyView(viewModel: viewModel)
+            .environment(RootViewModel(networkService: NetworkServiceMock()))
     }
 }
 #endif

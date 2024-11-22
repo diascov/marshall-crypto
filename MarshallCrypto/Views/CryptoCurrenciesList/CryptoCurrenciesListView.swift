@@ -12,12 +12,13 @@ struct CryptoCurrenciesListView: View {
 
     // MARK: - Private properties
 
+    @Environment(RootViewModel.self) private var rootViewModel
     @State private var navigationPath: [NavigationPath] = []
     @State private var viewModel: CryptoCurrenciesListViewModel
 
     // MARK: - Init
 
-    init(viewModel: CryptoCurrenciesListViewModel = CryptoCurrenciesListViewModel()) {
+    init(viewModel: CryptoCurrenciesListViewModel) {
         _viewModel = State(wrappedValue: viewModel)
     }
 
@@ -49,7 +50,7 @@ struct CryptoCurrenciesListView: View {
                 .refreshable(action: viewModel.fetchCryptoCurrenciesList)
                 .searchable(text: $viewModel.searchText, isPresented: $viewModel.isSearching)
                 .overlay {
-                    switch viewModel.overlayType {
+                    switch viewModel.overlayType(profile: rootViewModel.profile) {
                     case .progress: ProgressView()
                     case .searchContentUnavailable: ContentUnavailableView.search
                     case .contentUnavailable: contentUnavailable
@@ -76,7 +77,8 @@ private extension CryptoCurrenciesListView {
     var content: some View {
         List {
             settingsSection
-            cryptoCurrenciesSection
+            favoritesCryptoCurrenciesSection
+            otherCryptoCurrenciesSection
         }
         .scrollContentBackground(.hidden)
         .background {
@@ -98,16 +100,31 @@ private extension CryptoCurrenciesListView {
         }
     }
 
-    @ViewBuilder var cryptoCurrenciesSection: some View {
-        if viewModel.shouldShowComponents {
+    @ViewBuilder var favoritesCryptoCurrenciesSection: some View {
+        if viewModel.shouldShowFavoritesSection(in: rootViewModel.profile) {
             Section {
-                ForEach(viewModel.searchedCryptoCurrencies) { cryptoCurrency in
+                ForEach(viewModel.searchedFavoriteCryptoCurrencies(in: rootViewModel.profile)) { cryptoCurrency in
                     NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
                         item(for: cryptoCurrency)
                     }
                 }
             } header: {
+                Text("FAVS")
+                    .foregroundStyle(Color.accent)
+            }
+            .listRowBackground(Color.backgroundSecondary)
+        }
+    }
 
+    @ViewBuilder var otherCryptoCurrenciesSection: some View {
+        if viewModel.shouldShowOtherSection(in: rootViewModel.profile) {
+            Section {
+                ForEach(viewModel.searchedOtherCryptoCurrencies(in: rootViewModel.profile)) { cryptoCurrency in
+                    NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
+                        item(for: cryptoCurrency)
+                    }
+                }
+            } header: {
                 Text(viewModel.currentPricesText)
                     .foregroundStyle(Color.accent)
             }

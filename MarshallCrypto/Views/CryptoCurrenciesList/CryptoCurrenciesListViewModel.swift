@@ -12,18 +12,6 @@ import Core
 
     // MARK: - Public properties
 
-    var overlayType: CryptoCurrenciesListOverlayType? {
-        if isInitialLoad {
-            .progress
-        } else if cryptoCurrencies.isEmpty {
-            .contentUnavailable
-        } else if searchedCryptoCurrencies.isEmpty {
-            .searchContentUnavailable
-        } else {
-            nil
-        }
-    }
-
     var shouldShowComponents: Bool {
         !cryptoCurrencies.isEmpty && !isSearching
     }
@@ -46,12 +34,6 @@ import Core
 
             updateSortOption()
         }
-    }
-
-    var searchedCryptoCurrencies: [CryptoCurrency] {
-        searchText.isEmpty
-        ? sortedCryptoCurrencies
-        : sortedCryptoCurrencies.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
     }
 
     var isPresentedAlert = false
@@ -146,6 +128,42 @@ extension CryptoCurrenciesListViewModel {
     func showProfile() {
         isPresentedProfile = true
     }
+
+    func shouldShowFavoritesSection(in profile: Profile?) -> Bool {
+        !searchedFavoriteCryptoCurrencies(in: profile).isEmpty
+    }
+
+    func shouldShowOtherSection(in profile: Profile?) -> Bool {
+        !searchedOtherCryptoCurrencies(in: profile).isEmpty
+    }
+
+    func searchedFavoriteCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {
+        let favoriteCryptoCurrencies = favoriteCryptoCurrencies(in: profile)
+
+        return searchText.isEmpty
+        ? favoriteCryptoCurrencies
+        : favoriteCryptoCurrencies.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+
+    func searchedOtherCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {
+        let otherCryptoCurrencies = otherCryptoCurrencies(in: profile)
+
+        return searchText.isEmpty
+        ? otherCryptoCurrencies
+        : otherCryptoCurrencies.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+
+    func overlayType(profile: Profile?) -> CryptoCurrenciesListOverlayType? {
+        if isInitialLoad {
+            .progress
+        } else if cryptoCurrencies.isEmpty {
+            .contentUnavailable
+        } else if !shouldShowFavoritesSection(in: profile) && !shouldShowOtherSection(in: profile) {
+            .searchContentUnavailable
+        } else {
+            nil
+        }
+    }
 }
 
 // MARK: - Private
@@ -159,6 +177,20 @@ private extension CryptoCurrenciesListViewModel {
 
     func updateSortOption() {
         UserDefaultsController.set(sortOption.rawValue, forKey: .sortOption)
+    }
+
+    func favoriteCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {
+        guard let profile else { return [] }
+
+        let favoriteCryptoCurrencies = sortedCryptoCurrencies.filter { profile.isFavorite(cryptoCurrency: $0) }
+        return favoriteCryptoCurrencies
+    }
+
+    func otherCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {
+        guard let profile else { return [] }
+
+        let otherCryptoCurrencies = sortedCryptoCurrencies.filter { !profile.isFavorite(cryptoCurrency: $0) }
+        return otherCryptoCurrencies
     }
 }
 

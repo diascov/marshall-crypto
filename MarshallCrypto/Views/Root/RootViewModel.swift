@@ -67,7 +67,21 @@ extension RootViewModel {
         profile = try? await networkService.fetchProfile(profileID: profileID)
 
         if profile == nil {
-            profile = Profile(id: profileID, favorites: [])
+            profile = Profile(id: profileID, favorites: ["bitcoin"])
+        }
+    }
+
+    func toggleFavorite(id: String) {
+        profile?.toggleFavorite(id: id)
+    }
+
+    func updateProfile() async {
+        guard let profile else { return }
+        
+        do {
+            try await networkService.updateProfile(profile)
+        } catch {
+            self.error = error as? NetworkServiceError
         }
     }
 
