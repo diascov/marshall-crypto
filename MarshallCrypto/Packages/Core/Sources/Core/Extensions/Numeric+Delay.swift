@@ -14,7 +14,7 @@ public extension DelayConstants where Self: BinaryInteger {
 }
 
 public extension DelayConstants where Self: FloatingPoint {
-    static var delay: Self { 500_000_000 }
+    static var delay: Self { 500_000_000 } // 0.5 sec
 }
 
 extension UInt64: DelayConstants {}

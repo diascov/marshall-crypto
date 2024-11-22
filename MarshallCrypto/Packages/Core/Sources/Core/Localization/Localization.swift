@@ -37,7 +37,6 @@ public enum ErrorStrings: String, Localizable {
     case missingProfileMessage
 }
 
-
 public enum CryptoCurrenciesListStrings: String, Localizable {
     case title
     case contentUnavailableTitle
