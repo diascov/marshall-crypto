@@ -63,11 +63,11 @@ extension RootViewModel {
 
         guard let profileID = firebaseUser?.uid else { return }
 
-        // no error handling. If there is no profile in database, we create one locally
+        // Skipping error handling, if there is no profile in database we create one locally
         profile = try? await networkService.fetchProfile(profileID: profileID)
 
         if profile == nil {
-            profile = Profile(id: profileID, favorites: ["bitcoin"])
+            profile = Profile(favorites: [])
         }
     }
 
@@ -76,13 +76,10 @@ extension RootViewModel {
     }
 
     func updateProfile() async {
-        guard let profile else { return }
-        
-        do {
-            try await networkService.updateProfile(profile)
-        } catch {
-            self.error = error as? NetworkServiceError
-        }
+        guard let profile, let profileID = firebaseUser?.uid else { return }
+
+        // Skipping error handling, root view doesn't need to handle updateProfile errors
+        try? await networkService.updateProfile(profile, id: profileID)
     }
 
     func signOut() {

@@ -6,11 +6,9 @@
 //
 
 public struct Profile: Codable, Sendable {
-    let id: String
     private(set) public var favorites: [String]
 
-    public init(id: String, favorites: [String]) {
-        self.id = id
+    public init(favorites: [String]) {
         self.favorites = favorites
     }
 }
@@ -34,6 +32,6 @@ public extension Profile {
 
 #if DEBUG
 extension Profile {
-    static let preview = Profile(id: "1", favorites: ["bitcoin", "solana"])
+    static let preview = Profile(favorites: ["bitcoin", "solana"])
 }
 #endif

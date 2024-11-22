@@ -15,7 +15,7 @@ import GoogleSignIn
     func retrieveAuthenticatedUser() async -> FirebaseAuth.User?
     func authenticate(rootViewController: UIViewController?) async throws -> FirebaseAuth.User
     func fetchProfile(profileID: String) async throws -> Profile
-    func updateProfile(_ profile: Profile) async throws
+    func updateProfile(_ profile: Profile, id: String) async throws
     func signOut()
     func fetchCryptoCurrenciesList() async throws -> [CryptoCurrency]
     func fetchConversionRate() async throws -> ConversionRate
@@ -77,9 +77,9 @@ extension NetworkService: NetworkServiceAPI {
         }
     }
 
-    public func updateProfile(_ profile: Profile) async throws {
+    public func updateProfile(_ profile: Profile, id: String) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            databaseReference.child(profile.id).setValue(profile.asDictionary) { error, _ in
+            databaseReference.child(id).setValue(profile.asDictionary) { error, _ in
                 if let error {
                     continuation.resume(throwing: NetworkServiceError.custom(error))
                 } else {
@@ -231,7 +231,7 @@ public struct NetworkServiceMock: NetworkServiceAPI {
         return .preview
     }
 
-    public func updateProfile(_ profile: Profile) async throws {
+    public func updateProfile(_ profile: Profile, id: String) async throws {
 
     }
 

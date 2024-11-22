@@ -36,6 +36,11 @@ struct CryptoCurrencyView: View {
                     }
                 }
             }
+            .onDisappear {
+                Task {
+                    await rootViewModel.updateProfile()
+                }
+            }
     }
 }
 
