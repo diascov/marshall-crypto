@@ -23,17 +23,19 @@ struct ProfileView: View {
     }
 
     var body: some View {
-        content
-            .toolbar {
-                Button {
-                    dismiss()
-                } label: {
-                    Image.xmarkCircle
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.accent)
+        NavigationStack {
+            content
+                .toolbar {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image.xmarkCircle
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.accent)
+                    }
                 }
-            }
+        }
     }
 }
 
@@ -48,14 +50,19 @@ private extension ProfileView {
 
             VStack {
                 profileImage
-                Text(rootViewModel.firebaseUser?.displayName ?? "Dmitrii Iascov")
+                Text(rootViewModel.firebaseUser?.displayName ?? "")
                     .foregroundStyle(Color.textPrimary)
-                Text(rootViewModel.firebaseUser?.email ?? "dmitrii.iascov@gmail.com")
+                Text(rootViewModel.firebaseUser?.email ?? "")
                     .foregroundStyle(Color.textPrimary)
                 Spacer()
 
                 Button {
-                    viewModel.signOut()
+                    dismiss()
+
+                    Task {
+                        try? await Task.sleep(nanoseconds: .delay)
+                        rootViewModel.signOut()
+                    }
                 } label: {
                     Text(viewModel.signOutText)
                 }
@@ -79,7 +86,7 @@ private extension ProfileView {
 
 #Preview {
     NavigationStack {
-        ProfileView(viewModel: ProfileViewModel(networkService: NetworkServiceMock()))
+        ProfileView(viewModel: ProfileViewModel())
             .environment(RootViewModel(networkService: NetworkServiceMock()))
     }
 }

@@ -70,4 +70,10 @@ extension RootViewModel {
             profile = Profile(id: profileID, favorites: [])
         }
     }
+
+    func signOut() {
+        networkService.signOut()
+        profile = nil
+        firebaseUser = nil
+    }
 }
