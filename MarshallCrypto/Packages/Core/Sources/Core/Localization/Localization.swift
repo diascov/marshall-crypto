@@ -58,3 +58,7 @@ public enum CryptoCurrencyStrings: String, Localizable {
     case priceHigh
     case priceLow
 }
+
+public enum ProfileStrings: String, Localizable {
+    case signOut
+}

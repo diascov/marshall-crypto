@@ -25,6 +25,16 @@ struct CryptoCurrenciesListView: View {
         NavigationStack(path: $navigationPath) {
             currenciesList
                 .navigationTitle(viewModel.titleText)
+                .toolbar {
+                    Button {
+                        viewModel.showProfile()
+                    } label: {
+                        Image.personCropCircle
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.accent)
+                    }
+                }
                 .navigationDestination(for: NavigationPath.self) { destination in
                     if case .cryptoCurrency(let cryptoCurrency) = destination {
                         CryptoCurrencyView(viewModel: CryptoCurrencyViewModel(cryptoCurrency: cryptoCurrency,
@@ -50,6 +60,9 @@ struct CryptoCurrenciesListView: View {
                     Button(viewModel.okText) { }
                 } message: { error in
                     Text(error.failureReason ?? "")
+                }
+                .sheet(isPresented: $viewModel.isPresentedProfile) {
+                    ProfileView(viewModel: ProfileViewModel())
                 }
         }
         .tint(Color.accent)
@@ -166,5 +179,6 @@ private extension CryptoCurrenciesListView {
 #Preview {
     let viewModel = CryptoCurrenciesListViewModel(networkService: NetworkServiceMock())
     CryptoCurrenciesListView(viewModel: viewModel)
+        .environment(RootViewModel(networkService: NetworkServiceMock()))
 }
 #endif

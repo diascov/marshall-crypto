@@ -32,6 +32,7 @@ struct RootView: View {
             } message: { error in
                 Text(error.failureReason ?? "")
             }
+            .environment(viewModel)
     }
 }
 

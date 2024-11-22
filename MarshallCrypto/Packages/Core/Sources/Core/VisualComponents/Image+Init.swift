@@ -15,6 +15,11 @@ public extension Image {
     static let arrowDown = Icon.arrowDown.image
     static let arrowLeftArrowRight = Icon.arrowLeftArrowRight.image
     static let arrowUpArrowDown = Icon.arrowUpArrowDown.image
+    static let personCropCircle = Icon.personCropCircle.image
+    static let xmarkCircle = Icon.xmarkCircle.image
+}
+
+public extension Image {
     static let signInWithGoogle = CoreImage.signInWithGoogle.image
 }
 
@@ -26,6 +31,8 @@ private enum Icon: String {
     case arrowDown = "arrow.down"
     case arrowLeftArrowRight = "arrow.left.arrow.right"
     case arrowUpArrowDown = "arrow.up.arrow.down"
+    case personCropCircle = "person.crop.circle"
+    case xmarkCircle = "xmark.circle"
 
     var image: Image {
         Image(systemName: rawValue)

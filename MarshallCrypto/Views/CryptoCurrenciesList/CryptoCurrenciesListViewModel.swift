@@ -52,6 +52,7 @@ import Core
     var searchText = ""
     var isSearching = false
     var isLoadingConversionRate = false
+    var isPresentedProfile = false
     private(set) var isInitialLoad = true
     private(set) var error: NetworkServiceError?
     private(set) var selectedCurrency: Currency
@@ -134,6 +135,10 @@ extension CryptoCurrenciesListViewModel {
 
     func price(cryptoCurrency: CryptoCurrency, priceType: CryptoCurrency.PriceType) -> String {
         CurrencyFormatter.price(value: cryptoCurrency.price(for: priceType), in: selectedCurrency, conversionRate: conversionRate)
+    }
+
+    func showProfile() {
+        isPresentedProfile = true
     }
 }
 

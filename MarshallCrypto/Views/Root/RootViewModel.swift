@@ -18,15 +18,15 @@ import FirebaseAuth
     }
 
     var isPresentedAlert = false
+    private(set) var isInitialLoad = true
     private(set) var profile: Profile?
     private(set) var error: NetworkServiceError?
-    private(set) var isInitialLoad = true
+    private(set) var firebaseUser: FirebaseAuth.User?
 
     let okText = CommonStrings.ok.localized()
 
     // MARK: - Private properties
 
-    private var firebaseUser: FirebaseAuth.User?
     private let networkService: NetworkServiceAPI
 
     // MARK: - Init
