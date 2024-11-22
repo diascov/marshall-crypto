@@ -65,6 +65,7 @@ private extension ProfileView {
                     }
                 } label: {
                     Text(viewModel.signOutText)
+                        .foregroundStyle(Color.accent)
                 }
             }
             .padding(16)
@@ -76,6 +77,11 @@ private extension ProfileView {
             image
                 .resizable()
                 .frame(width: 60, height: 60)
+                .clipShape(Capsule())
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Color.accent, lineWidth: 2)
+                )
         } placeholder: {
             Image.personCropCircle
                 .resizable()

@@ -28,6 +28,10 @@ import Core
         !cryptoCurrencies.isEmpty && !isSearching
     }
 
+    var shouldShowConversionRateToggle: Bool {
+        !isLoadingConversionRate && conversionRate != nil
+    }
+
     var shouldShowPricesInSEK: Bool {
         didSet {
             guard shouldShowPricesInSEK != oldValue else { return }
@@ -45,13 +49,14 @@ import Core
     }
 
     var searchedCryptoCurrencies: [CryptoCurrency] {
-        searchText.isEmpty ? sortedCryptoCurrencies : sortedCryptoCurrencies.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        searchText.isEmpty
+        ? sortedCryptoCurrencies
+        : sortedCryptoCurrencies.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
     }
 
     var isPresentedAlert = false
     var searchText = ""
     var isSearching = false
-    var isLoadingConversionRate = false
     var isPresentedProfile = false
     private(set) var isInitialLoad = true
     private(set) var error: NetworkServiceError?
@@ -80,6 +85,7 @@ import Core
         }
     }
 
+    private var isLoadingConversionRate = false
     private var cryptoCurrencies: [CryptoCurrency] = []
     private let networkService: NetworkServiceAPI
 

@@ -23,7 +23,7 @@ struct CryptoCurrenciesListView: View {
 
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            currenciesList
+            content
                 .navigationTitle(viewModel.titleText)
                 .toolbar {
                     Button {
@@ -73,45 +73,33 @@ struct CryptoCurrenciesListView: View {
 
 private extension CryptoCurrenciesListView {
 
-    var currenciesList: some View {
+    var content: some View {
         List {
-            Section {
-                if viewModel.shouldShowComponents {
-                    HStack(spacing: 8) {
-                        ProgressView()
-                            .opacity(viewModel.isLoadingConversionRate ? 1 : 0)
-                        Text(viewModel.pricesCurrencyToggleText)
-                            .foregroundStyle(Color.textPrimary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.8)
-                        Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
-                            .tint(Color.accent)
-                    }
+            settingsSection
+            cryptoCurrenciesSection
+        }
+        .scrollContentBackground(.hidden)
+        .background {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+        }
+    }
 
-                    HStack(spacing: 8) {
-                        Text(viewModel.sortByText)
-                            .foregroundStyle(Color.textPrimary)
-                            .padding(.leading, 28)
-                        Spacer()
-                        Picker("", selection: $viewModel.sortOption) {
-                            ForEach(CryptoCurrenciesListViewModel.CryptoCurrencySortOption.allCases, id: \.self) { option in
-                                Text(option.title)
-                            }
-                        }
-                        .fixedSize()
-                        .foregroundStyle(Color.textPrimary)
-                        .tint(Color.accent)
-                        .pickerStyle(.menu)
-                    }
-                }
+    @ViewBuilder var settingsSection: some View {
+        if viewModel.shouldShowComponents {
+            Section {
+                currencyToggle
+                sortPicker
             } header: {
-                if viewModel.shouldShowComponents {
-                    Text(viewModel.settingsText)
-                        .foregroundStyle(Color.accent)
-                }
+                Text(viewModel.settingsText)
+                    .foregroundStyle(Color.accent)
             }
             .listRowBackground(Color.backgroundSecondary)
+        }
+    }
 
+    @ViewBuilder var cryptoCurrenciesSection: some View {
+        if viewModel.shouldShowComponents {
             Section {
                 ForEach(viewModel.searchedCryptoCurrencies) { cryptoCurrency in
                     NavigationLink(value: NavigationPath.cryptoCurrency(cryptoCurrency)) {
@@ -119,17 +107,46 @@ private extension CryptoCurrenciesListView {
                     }
                 }
             } header: {
-                if viewModel.shouldShowComponents {
-                    Text(viewModel.currentPricesText)
-                        .foregroundStyle(Color.accent)
-                }
+
+                Text(viewModel.currentPricesText)
+                    .foregroundStyle(Color.accent)
             }
             .listRowBackground(Color.backgroundSecondary)
         }
-        .scrollContentBackground(.hidden)
-        .background {
-            Color.backgroundPrimary
-                .ignoresSafeArea()
+    }
+
+    var currencyToggle: some View {
+        HStack(spacing: 8) {
+            Text(viewModel.pricesCurrencyToggleText)
+                .foregroundStyle(Color.textPrimary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+
+            Spacer()
+
+            if viewModel.shouldShowConversionRateToggle {
+                Toggle("", isOn: $viewModel.shouldShowPricesInSEK)
+                    .tint(Color.accent)
+            } else {
+                ProgressView()
+            }
+        }
+    }
+
+    var sortPicker: some View {
+        HStack(spacing: 8) {
+            Text(viewModel.sortByText)
+                .foregroundStyle(Color.textPrimary)
+            Spacer()
+            Picker("", selection: $viewModel.sortOption) {
+                ForEach(CryptoCurrenciesListViewModel.CryptoCurrencySortOption.allCases, id: \.self) { option in
+                    Text(option.title)
+                }
+            }
+            .fixedSize()
+            .foregroundStyle(Color.textPrimary)
+            .tint(Color.accent)
+            .pickerStyle(.menu)
         }
     }
 
