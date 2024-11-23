@@ -31,7 +31,7 @@ public extension Profile {
 }
 
 #if DEBUG
-extension Profile {
+public extension Profile {
     static let preview = Profile(favorites: ["bitcoin", "solana"])
 }
 #endif

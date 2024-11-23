@@ -48,6 +48,7 @@ public enum CryptoCurrenciesListStrings: String, Localizable {
     case name
     case rank
     case currentPrice
+    case favorites
 }
 
 public enum CryptoCurrencyStrings: String, Localizable {

@@ -14,14 +14,14 @@ import FirebaseAuth
     // MARK: - Public properties
 
     var isAuthenticated: Bool {
-        firebaseUser != nil
+        user != nil
     }
 
     var isPresentedAlert = false
     private(set) var isInitialLoad = true
     private(set) var profile: Profile?
     private(set) var error: NetworkServiceError?
-    private(set) var firebaseUser: FirebaseAuth.User?
+    private(set) var user: Core.User?
 
     let okText = CommonStrings.ok.localized()
 
@@ -41,7 +41,7 @@ import FirebaseAuth
 extension RootViewModel {
 
     func retrieveAuthenticatedUser() async {
-        firebaseUser = await networkService.retrieveAuthenticatedUser()
+        user = await networkService.retrieveAuthenticatedUser()
     }
 
     func authenticate(rootViewController: UIViewController?) async {
@@ -50,7 +50,7 @@ extension RootViewModel {
         }
 
         do {
-            firebaseUser = try await networkService.authenticate(rootViewController: rootViewController)
+            user = try await networkService.authenticate(rootViewController: rootViewController)
         } catch {
             self.error = error as? NetworkServiceError
         }
@@ -61,10 +61,10 @@ extension RootViewModel {
             isInitialLoad = false
         }
 
-        guard let profileID = firebaseUser?.uid else { return }
+        guard let userID = user?.id else { return }
 
         // Skipping error handling, if there is no profile in database we create one locally
-        profile = try? await networkService.fetchProfile(profileID: profileID)
+        profile = try? await networkService.fetchProfile(userID: userID)
 
         if profile == nil {
             profile = Profile(favorites: [])
@@ -76,15 +76,22 @@ extension RootViewModel {
     }
 
     func updateProfile() async {
-        guard let profile, let profileID = firebaseUser?.uid else { return }
+        guard let profile, let userID = user?.id else { return }
 
         // Skipping error handling, root view doesn't need to handle updateProfile errors
-        try? await networkService.updateProfile(profile, id: profileID)
+        try? await networkService.updateProfile(profile, id: userID)
     }
 
     func signOut() {
         networkService.signOut()
         profile = nil
-        firebaseUser = nil
+        user = nil
     }
+
+#if DEBUG
+    func authenticateWithTestUser() async {
+        user = UserMock()
+        profile = .preview
+    }
+#endif
 }

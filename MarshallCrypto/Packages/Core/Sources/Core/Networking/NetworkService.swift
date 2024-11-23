@@ -12,9 +12,9 @@ import FirebaseDatabase
 import GoogleSignIn
 
 @MainActor public protocol NetworkServiceAPI {
-    func retrieveAuthenticatedUser() async -> FirebaseAuth.User?
-    func authenticate(rootViewController: UIViewController?) async throws -> FirebaseAuth.User
-    func fetchProfile(profileID: String) async throws -> Profile
+    func retrieveAuthenticatedUser() async -> User?
+    func authenticate(rootViewController: UIViewController?) async throws -> User
+    func fetchProfile(userID: String) async throws -> Profile
     func updateProfile(_ profile: Profile, id: String) async throws
     func signOut()
     func fetchCryptoCurrenciesList() async throws -> [CryptoCurrency]
@@ -47,20 +47,20 @@ import GoogleSignIn
 
 extension NetworkService: NetworkServiceAPI {
 
-    public func retrieveAuthenticatedUser() async -> FirebaseAuth.User? {
+    public func retrieveAuthenticatedUser() async -> User? {
         await retrieveAuthenticatedFirebaseUser()
     }
 
-    public func authenticate(rootViewController: UIViewController?) async throws -> FirebaseAuth.User {
+    public func authenticate(rootViewController: UIViewController?) async throws -> User {
         let googleUser = try await authenticateGoogle(rootViewController: rootViewController)
         let firebaseUser = try await authenticateFirebase(googleUser: googleUser)
 
         return firebaseUser
     }
 
-    public func fetchProfile(profileID: String) async throws -> Profile {
+    public func fetchProfile(userID: String) async throws -> Profile {
         try await withCheckedThrowingContinuation { continuation in
-            databaseReference.child(profileID).observeSingleEvent(of: .value) { snapshot, _  in
+            databaseReference.child(userID).observeSingleEvent(of: .value) { snapshot, _  in
                 do {
                     guard let object = snapshot.value, !(object is NSNull) else {
                         return continuation.resume(throwing: NetworkServiceError.missingProfile)
@@ -216,17 +216,17 @@ private extension NetworkService {
 #if DEBUG
 public struct NetworkServiceMock: NetworkServiceAPI {
 
-    public func retrieveAuthenticatedUser() async -> FirebaseAuth.User? {
+    public func retrieveAuthenticatedUser() async -> User? {
         try? await Task.sleep(nanoseconds: 1_000_000_000)
-        return nil
+        return UserMock()
     }
 
-    public func authenticate(rootViewController: UIViewController?) async throws -> FirebaseAuth.User {
+    public func authenticate(rootViewController: UIViewController?) async throws -> User {
         try await Task.sleep(nanoseconds: 1_000_000_000)
-        throw NetworkServiceError.unhandled
+        return UserMock()
     }
 
-    public func fetchProfile(profileID: String) async throws -> Profile {
+    public func fetchProfile(userID: String) async throws -> Profile {
         try await Task.sleep(nanoseconds: 1_000_000_000)
         return .preview
     }
@@ -241,7 +241,7 @@ public struct NetworkServiceMock: NetworkServiceAPI {
 
     public func fetchCryptoCurrenciesList() async throws -> [CryptoCurrency] {
         try await Task.sleep(nanoseconds: 1_000_000_000)
-        return [.preview0, .preview1, .preview2].shuffled()
+        return [.preview0, .preview1, .preview2, .preview3].shuffled()
     }
 
     public func fetchConversionRate() async throws -> ConversionRate {

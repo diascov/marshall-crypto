@@ -146,5 +146,12 @@ public extension CryptoCurrency {
                                          rank: 2,
                                          lastUpdated: Date(),
                                          price: CryptoCurrency.Price(current: 1.0612271837e-7, high: 131.3213, low: 1.2, dailyChange: 1))
+    static let preview3 = CryptoCurrency(id: "solana",
+                                         name: "Solana",
+                                         symbol: "sol",
+                                         imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756"),
+                                         rank: 4,
+                                         lastUpdated: Date(),
+                                         price: CryptoCurrency.Price(current: Float.random(in: 100...999), high: Float.random(in: 100...999), low: Float.random(in: 100...999), dailyChange: Float.random(in: 100...999)))
 }
 #endif

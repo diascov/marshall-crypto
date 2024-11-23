@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Core
 
 @main struct MarshallCryptoApp: App {
 

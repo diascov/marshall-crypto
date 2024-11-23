@@ -109,7 +109,7 @@ private extension CryptoCurrenciesListView {
                     }
                 }
             } header: {
-                Text("FAVS")
+                Text(viewModel.favoritesText)
                     .foregroundStyle(Color.accent)
             }
             .listRowBackground(Color.backgroundSecondary)

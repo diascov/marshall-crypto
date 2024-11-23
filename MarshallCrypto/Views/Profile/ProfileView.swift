@@ -50,9 +50,9 @@ private extension ProfileView {
 
             VStack {
                 profileImage
-                Text(rootViewModel.firebaseUser?.displayName ?? "")
+                Text(rootViewModel.user?.name ?? "")
                     .foregroundStyle(Color.textPrimary)
-                Text(rootViewModel.firebaseUser?.email ?? "")
+                Text(rootViewModel.user?.emailAddress ?? "")
                     .foregroundStyle(Color.textPrimary)
                 Spacer()
 
@@ -73,7 +73,7 @@ private extension ProfileView {
     }
 
     @ViewBuilder var profileImage: some View {
-        AsyncImage(url: rootViewModel.firebaseUser?.photoURL) { image in
+        AsyncImage(url: rootViewModel.user?.imageURL) { image in
             image
                 .resizable()
                 .frame(width: 60, height: 60)

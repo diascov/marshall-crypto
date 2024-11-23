@@ -53,6 +53,7 @@ import Core
     let currentPricesText = CryptoCurrenciesListStrings.currentPrices.localized()
     let settingsText = CryptoCurrenciesListStrings.settings.localized()
     let sortByText = CryptoCurrenciesListStrings.sortBy.localized()
+    let favoritesText = CryptoCurrenciesListStrings.favorites.localized()
 
     // MARK: - Private propertries
 
@@ -156,10 +157,8 @@ extension CryptoCurrenciesListViewModel {
     func overlayType(profile: Profile?) -> CryptoCurrenciesListOverlayType? {
         if isInitialLoad {
             .progress
-        } else if cryptoCurrencies.isEmpty {
-            .contentUnavailable
         } else if !shouldShowFavoritesSection(in: profile) && !shouldShowOtherSection(in: profile) {
-            .searchContentUnavailable
+            isSearching ? .searchContentUnavailable : .contentUnavailable
         } else {
             nil
         }
@@ -187,7 +186,7 @@ private extension CryptoCurrenciesListViewModel {
     }
 
     func otherCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {
-        guard let profile else { return [] }
+        guard let profile else { return sortedCryptoCurrencies }
 
         let otherCryptoCurrencies = sortedCryptoCurrencies.filter { !profile.isFavorite(cryptoCurrency: $0) }
         return otherCryptoCurrencies

@@ -44,13 +44,19 @@ private extension RootView {
         if viewModel.isAuthenticated {
             CryptoCurrenciesListView(viewModel: CryptoCurrenciesListViewModel())
         } else {
-            ZStack {
-                Color.accent
-                    .ignoresSafeArea()
+            signInButtons
+        }
+    }
 
-                if viewModel.isInitialLoad {
-                    ProgressView()
-                } else {
+    var signInButtons: some View {
+        ZStack {
+            Color.accent
+                .ignoresSafeArea()
+
+            if viewModel.isInitialLoad {
+                ProgressView()
+            } else {
+                VStack {
                     Button {
                         let rootViewController = sceneDelegate.window?.rootViewController
 
@@ -62,6 +68,20 @@ private extension RootView {
                         Image.signInWithGoogle
                             .shadow(color: .backgroundSecondary, radius: 4, x: 0, y: 2)
                     }
+#if DEBUG
+                    Button {
+                        Task {
+                            await viewModel.authenticateWithTestUser()
+                        }
+                    } label: {
+                        Text("Sign in with test user")
+                            .padding()
+                            .foregroundStyle(Color.accent)
+                            .background(Color.backgroundPrimary)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .shadow(color: .backgroundSecondary, radius: 4, x: 0, y: 2)
+                    }
+#endif
                 }
             }
         }
