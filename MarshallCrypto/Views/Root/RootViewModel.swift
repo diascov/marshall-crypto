@@ -91,7 +91,6 @@ extension RootViewModel {
 #if DEBUG
     func authenticateWithTestUser() async {
         user = UserMock()
-        profile = .preview
     }
 #endif
 }

@@ -72,6 +72,7 @@ private extension RootView {
                     Button {
                         Task {
                             await viewModel.authenticateWithTestUser()
+                            await viewModel.fetchProfile()
                         }
                     } label: {
                         Text("Sign in with test user")
