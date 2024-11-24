@@ -130,22 +130,22 @@ public extension CryptoCurrency {
                                          symbol: "btc",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
                                          rank: 3,
-                                         lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 1000.8393123, low: 50.3232, dailyChange: 0))
+                                         lastUpdated: Date(timeIntervalSince1970: 1732451256),
+                                         price: CryptoCurrency.Price(current: 100000.1, high: 101000.2, low: 99000.3, dailyChange: 0.00001234))
     static let preview1 = CryptoCurrency(id: "ethereum",
                                          name: "Ethereum",
                                          symbol: "eth",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"),
                                          rank: 1,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 111.111, low: 11.11, dailyChange: 1111.1111))
+                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 111.11, low: 11.11, dailyChange: 1111.11))
     static let preview2 = CryptoCurrency(id: "tether",
                                          name: "Tether",
                                          symbol: "usdt",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661"),
                                          rank: 2,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: 1.0612271837e-7, high: 131.3213, low: 1.2, dailyChange: 1))
+                                         price: CryptoCurrency.Price(current: 1.0612271837e-7, high: 131.32, low: 1.2, dailyChange: 1))
     static let preview3 = CryptoCurrency(id: "solana",
                                          name: "Solana",
                                          symbol: "sol",

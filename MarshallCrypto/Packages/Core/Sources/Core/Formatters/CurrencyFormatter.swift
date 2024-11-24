@@ -12,15 +12,14 @@ public struct CurrencyFormatter {
     public static func price(value: Float,
                              in selectedCurrency: Currency,
                              conversionRate: ConversionRate?) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = selectedCurrency.rawValue
+        let adjustedValue = value * (conversionRate?.rates[selectedCurrency] ?? 1)
 
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 8
+        let price = adjustedValue.formatted(.currency(code: selectedCurrency.rawValue))
 
-        let currencyValue = value * (conversionRate?.rates[selectedCurrency] ?? 1)
+        if adjustedValue < 0.01 {
+            return "< \(price)"
+        }
 
-        return formatter.string(from: NSNumber(value: currencyValue)) ?? "-"
+        return price
     }
 }
