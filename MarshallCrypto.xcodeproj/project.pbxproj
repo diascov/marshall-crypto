@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		722202872CEA79EF00EED98C /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 722202862CEA79EF00EED98C /* Core */; };
 		724014A62CEE586100D8F0BD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 724014A52CEE586100D8F0BD /* GoogleSignIn */; };
 		724014A82CEE586100D8F0BD /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 724014A72CEE586100D8F0BD /* GoogleSignInSwift */; };
 		724014C32CEF1F4800D8F0BD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C22CEF1F4800D8F0BD /* FirebaseAuth */; };
@@ -15,6 +14,7 @@
 		724014C72CEF1F4800D8F0BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C62CEF1F4800D8F0BD /* FirebaseDatabase */; };
 		724014C92CEF1F4800D8F0BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C82CEF1F4800D8F0BD /* FirebaseFirestore */; };
 		724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 724014CA2CEF1F4800D8F0BD /* FirebaseStorage */; };
+		72CEE7162CF3CE2D001E9290 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 72CEE7152CF3CE2D001E9290 /* Core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +68,8 @@
 				724014A82CEE586100D8F0BD /* GoogleSignInSwift in Frameworks */,
 				724014C52CEF1F4800D8F0BD /* FirebaseCore in Frameworks */,
 				724014A62CEE586100D8F0BD /* GoogleSignIn in Frameworks */,
-				722202872CEA79EF00EED98C /* Core in Frameworks */,
 				724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */,
+				72CEE7162CF3CE2D001E9290 /* Core in Frameworks */,
 				724014C32CEF1F4800D8F0BD /* FirebaseAuth in Frameworks */,
 				724014C92CEF1F4800D8F0BD /* FirebaseFirestore in Frameworks */,
 			);
@@ -132,7 +132,6 @@
 			);
 			name = MarshallCrypto;
 			packageProductDependencies = (
-				722202862CEA79EF00EED98C /* Core */,
 				724014A52CEE586100D8F0BD /* GoogleSignIn */,
 				724014A72CEE586100D8F0BD /* GoogleSignInSwift */,
 				724014C22CEF1F4800D8F0BD /* FirebaseAuth */,
@@ -140,6 +139,7 @@
 				724014C62CEF1F4800D8F0BD /* FirebaseDatabase */,
 				724014C82CEF1F4800D8F0BD /* FirebaseFirestore */,
 				724014CA2CEF1F4800D8F0BD /* FirebaseStorage */,
+				72CEE7152CF3CE2D001E9290 /* Core */,
 			);
 			productName = "Marshall Crypto";
 			productReference = 722201B42CE3EEAE00EED98C /* MarshallCrypto.app */;
@@ -552,10 +552,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		722202862CEA79EF00EED98C /* Core */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Core;
-		};
 		724014A52CEE586100D8F0BD /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 724014A42CEE586100D8F0BD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -590,6 +586,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 724014C12CEF1F4800D8F0BD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		72CEE7152CF3CE2D001E9290 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
