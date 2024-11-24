@@ -31,12 +31,12 @@ import Foundation
             #expect(sut.price(priceType: .high) == "101 000,20 US$")
             #expect(sut.price(priceType: .low) == "99 000,30 US$")
             #expect(sut.price(priceType: .current) == "100 000,10 US$")
-            #expect(sut.price(priceType: .dailyChange) == "< 0,00 US$")
+            #expect(sut.price(priceType: .dailyChange) == "-")
         case .sek:
             #expect(sut.price(priceType: .high) == "1 108 770,12 kr")
             #expect(sut.price(priceType: .low) == "1 086 815,38 kr")
             #expect(sut.price(priceType: .current) == "1 097 791,12 kr")
-            #expect(sut.price(priceType: .dailyChange) == "< 0,00 kr")
+            #expect(sut.price(priceType: .dailyChange) == "-")
         }
     }
 

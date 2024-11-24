@@ -13,13 +13,13 @@ public struct CurrencyFormatter {
                              in selectedCurrency: Currency,
                              conversionRate: ConversionRate?) -> String {
         let adjustedValue = value * (conversionRate?.rates[selectedCurrency] ?? 1)
-
         let price = adjustedValue.formatted(.currency(code: selectedCurrency.rawValue))
 
-        if adjustedValue < 0.01 {
-            return "< \(price)"
+        switch adjustedValue {
+        case -0.01..<0, 0..<0.01:
+            return "-"
+        default:
+            return price
         }
-
-        return price
     }
 }

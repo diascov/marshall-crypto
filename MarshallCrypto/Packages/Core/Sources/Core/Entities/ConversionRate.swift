@@ -5,7 +5,7 @@
 //  Created by Dmitrii Iascov on 2024-11-17.
 //
 
-public struct ConversionRate: Sendable {
+public struct ConversionRate: Sendable, Equatable {
     let rates: [Currency: Float]
 }
 

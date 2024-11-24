@@ -129,7 +129,7 @@ public extension CryptoCurrency {
                                          name: "Bitcoin",
                                          symbol: "btc",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
-                                         rank: 3,
+                                         rank: 4,
                                          lastUpdated: Date(timeIntervalSince1970: 1732451256),
                                          price: CryptoCurrency.Price(current: 100000.1, high: 101000.2, low: 99000.3, dailyChange: 0.00001234))
     static let preview1 = CryptoCurrency(id: "ethereum",
@@ -138,7 +138,7 @@ public extension CryptoCurrency {
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"),
                                          rank: 1,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: Float.random(in: 1000...999999), high: 111.11, low: 11.11, dailyChange: 1111.11))
+                                         price: CryptoCurrency.Price(current: 5.55, high: 6.66, low: 4.44, dailyChange: 0.0001))
     static let preview2 = CryptoCurrency(id: "tether",
                                          name: "Tether",
                                          symbol: "usdt",
@@ -150,8 +150,15 @@ public extension CryptoCurrency {
                                          name: "Solana",
                                          symbol: "sol",
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/4128/large/solana.png?1718769756"),
-                                         rank: 4,
+                                         rank: 3,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: Float.random(in: 100...999), high: Float.random(in: 100...999), low: Float.random(in: 100...999), dailyChange: Float.random(in: 100...999)))
+                                         price: CryptoCurrency.Price(current: 0.009, high: 2.02, low: 3.03, dailyChange: 0.33712832187318))
+    static let preview4 = CryptoCurrency(id: "ripple",
+                                         name: "XRP",
+                                         symbol: "xrp",
+                                         imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"),
+                                         rank: 0,
+                                         lastUpdated: Date(),
+                                         price: CryptoCurrency.Price(current: 0.874021, high: 0.904909, low: 0.769145, dailyChange: 0.082679))
 }
 #endif
