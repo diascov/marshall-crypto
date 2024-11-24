@@ -69,15 +69,6 @@ public extension CryptoCurrency {
 
     enum PriceType {
         case high, low, current, dailyChange
-
-        public var title: String {
-            switch self {
-            case .high: CryptoCurrencyStrings.priceHigh.localized()
-            case .low: CryptoCurrencyStrings.priceLow.localized()
-            case .current: CryptoCurrencyStrings.priceCurrent.localized()
-            case .dailyChange: CryptoCurrencyStrings.dailyChange.localized()
-            }
-        }
     }
 }
 
