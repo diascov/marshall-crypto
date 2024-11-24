@@ -89,7 +89,7 @@ extension RootViewModel {
     }
 
 #if DEBUG
-    func authenticateWithTestUser() async {
+    func authenticateWithTestUser() {
         user = UserMock()
     }
 #endif

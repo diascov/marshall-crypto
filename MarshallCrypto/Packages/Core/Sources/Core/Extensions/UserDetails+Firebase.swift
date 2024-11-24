@@ -26,9 +26,9 @@ extension FirebaseAuth.User: User {
 public struct UserMock: User {
 
     public let id: String
-    public var name: String?
-    public var emailAddress: String?
-    public var imageURL: URL?
+    public let name: String?
+    public let emailAddress: String?
+    public let imageURL: URL?
 
     public init(id: String = "test_user",
                 name: String? = "Test User",

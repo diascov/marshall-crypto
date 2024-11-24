@@ -17,18 +17,29 @@
 		724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 724014CA2CEF1F4800D8F0BD /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		72CEE62E2CF295C6001E9290 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 722201AC2CE3EEAE00EED98C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 722201B32CE3EEAE00EED98C;
+			remoteInfo = MarshallCrypto;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		722201B42CE3EEAE00EED98C /* Marshall Crypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marshall Crypto.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		722201B42CE3EEAE00EED98C /* MarshallCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshallCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Marshall-Crypto-Info.plist"; sourceTree = "<group>"; };
+		72CEE62A2CF295C6001E9290 /* MarshallCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarshallCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		722202062CE8008800EED98C /* Exceptions for "MarshallCrypto" folder in "Marshall Crypto" target */ = {
+		722202062CE8008800EED98C /* Exceptions for "MarshallCrypto" folder in "MarshallCrypto" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Packages/Core,
 			);
-			target = 722201B32CE3EEAE00EED98C /* Marshall Crypto */;
+			target = 722201B32CE3EEAE00EED98C /* MarshallCrypto */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -36,9 +47,14 @@
 		722201B62CE3EEAE00EED98C /* MarshallCrypto */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				722202062CE8008800EED98C /* Exceptions for "MarshallCrypto" folder in "Marshall Crypto" target */,
+				722202062CE8008800EED98C /* Exceptions for "MarshallCrypto" folder in "MarshallCrypto" target */,
 			);
 			path = MarshallCrypto;
+			sourceTree = "<group>";
+		};
+		72CEE62B2CF295C6001E9290 /* MarshallCryptoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MarshallCryptoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -59,6 +75,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72CEE6272CF295C6001E9290 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +90,7 @@
 			children = (
 				724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */,
 				722201B62CE3EEAE00EED98C /* MarshallCrypto */,
+				72CEE62B2CF295C6001E9290 /* MarshallCryptoTests */,
 				722201B52CE3EEAE00EED98C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +98,8 @@
 		722201B52CE3EEAE00EED98C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				722201B42CE3EEAE00EED98C /* Marshall Crypto.app */,
+				722201B42CE3EEAE00EED98C /* MarshallCrypto.app */,
+				72CEE62A2CF295C6001E9290 /* MarshallCryptoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,9 +107,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		722201B32CE3EEAE00EED98C /* Marshall Crypto */ = {
+		722201B32CE3EEAE00EED98C /* MarshallCrypto */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 722201C22CE3EEB000EED98C /* Build configuration list for PBXNativeTarget "Marshall Crypto" */;
+			buildConfigurationList = 722201C22CE3EEB000EED98C /* Build configuration list for PBXNativeTarget "MarshallCrypto" */;
 			buildPhases = (
 				722201B02CE3EEAE00EED98C /* Sources */,
 				722201B12CE3EEAE00EED98C /* Frameworks */,
@@ -97,7 +122,7 @@
 			fileSystemSynchronizedGroups = (
 				722201B62CE3EEAE00EED98C /* MarshallCrypto */,
 			);
-			name = "Marshall Crypto";
+			name = MarshallCrypto;
 			packageProductDependencies = (
 				722202862CEA79EF00EED98C /* Core */,
 				724014A52CEE586100D8F0BD /* GoogleSignIn */,
@@ -109,8 +134,31 @@
 				724014CA2CEF1F4800D8F0BD /* FirebaseStorage */,
 			);
 			productName = "Marshall Crypto";
-			productReference = 722201B42CE3EEAE00EED98C /* Marshall Crypto.app */;
+			productReference = 722201B42CE3EEAE00EED98C /* MarshallCrypto.app */;
 			productType = "com.apple.product-type.application";
+		};
+		72CEE6292CF295C6001E9290 /* MarshallCryptoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CEE6302CF295C6001E9290 /* Build configuration list for PBXNativeTarget "MarshallCryptoTests" */;
+			buildPhases = (
+				72CEE6262CF295C6001E9290 /* Sources */,
+				72CEE6272CF295C6001E9290 /* Frameworks */,
+				72CEE6282CF295C6001E9290 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72CEE62F2CF295C6001E9290 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				72CEE62B2CF295C6001E9290 /* MarshallCryptoTests */,
+			);
+			name = MarshallCryptoTests;
+			packageProductDependencies = (
+			);
+			productName = MarshallCryptoTests;
+			productReference = 72CEE62A2CF295C6001E9290 /* MarshallCryptoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -125,9 +173,13 @@
 					722201B32CE3EEAE00EED98C = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					72CEE6292CF295C6001E9290 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 722201B32CE3EEAE00EED98C;
+					};
 				};
 			};
-			buildConfigurationList = 722201AF2CE3EEAE00EED98C /* Build configuration list for PBXProject "Marshall Crypto" */;
+			buildConfigurationList = 722201AF2CE3EEAE00EED98C /* Build configuration list for PBXProject "MarshallCrypto" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -146,13 +198,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				722201B32CE3EEAE00EED98C /* Marshall Crypto */,
+				722201B32CE3EEAE00EED98C /* MarshallCrypto */,
+				72CEE6292CF295C6001E9290 /* MarshallCryptoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		722201B22CE3EEAE00EED98C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CEE6282CF295C6001E9290 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -169,7 +229,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72CEE6262CF295C6001E9290 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72CEE62F2CF295C6001E9290 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 722201B32CE3EEAE00EED98C /* MarshallCrypto */;
+			targetProxy = 72CEE62E2CF295C6001E9290 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		722201C02CE3EEB000EED98C /* Debug */ = {
@@ -371,10 +446,56 @@
 			};
 			name = Release;
 		};
+		72CEE6312CF295C6001E9290 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TA22A7FUU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MarshallCryptoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarshallCrypto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MarshallCrypto";
+			};
+			name = Debug;
+		};
+		72CEE6322CF295C6001E9290 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TA22A7FUU7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MarshallCryptoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MarshallCrypto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MarshallCrypto";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		722201AF2CE3EEAE00EED98C /* Build configuration list for PBXProject "Marshall Crypto" */ = {
+		722201AF2CE3EEAE00EED98C /* Build configuration list for PBXProject "MarshallCrypto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				722201C02CE3EEB000EED98C /* Debug */,
@@ -383,11 +504,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		722201C22CE3EEB000EED98C /* Build configuration list for PBXNativeTarget "Marshall Crypto" */ = {
+		722201C22CE3EEB000EED98C /* Build configuration list for PBXNativeTarget "MarshallCrypto" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				722201C32CE3EEB000EED98C /* Debug */,
 				722201C42CE3EEB000EED98C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72CEE6302CF295C6001E9290 /* Build configuration list for PBXNativeTarget "MarshallCryptoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CEE6312CF295C6001E9290 /* Debug */,
+				72CEE6322CF295C6001E9290 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "D8E32D52-5E28-4470-AF7B-4734566DF794",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MarshallCrypto.xcodeproj",
+        "identifier" : "72CEE6292CF295C6001E9290",
+        "name" : "MarshallCryptoTests"
+      }
+    }
+  ],
+  "version" : 1
+}

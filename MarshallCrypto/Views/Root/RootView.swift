@@ -71,7 +71,7 @@ private extension RootView {
 #if DEBUG
                     Button {
                         Task {
-                            await viewModel.authenticateWithTestUser()
+                            viewModel.authenticateWithTestUser()
                             await viewModel.fetchProfile()
                         }
                     } label: {
