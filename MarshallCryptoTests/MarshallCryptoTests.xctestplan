@@ -14,6 +14,13 @@
   "testTargets" : [
     {
       "target" : {
+        "containerPath" : "container:MarshallCrypto\/Packages\/Core",
+        "identifier" : "CoreTests",
+        "name" : "CoreTests"
+      }
+    },
+    {
+      "target" : {
         "containerPath" : "container:MarshallCrypto.xcodeproj",
         "identifier" : "72CEE6292CF295C6001E9290",
         "name" : "MarshallCryptoTests"

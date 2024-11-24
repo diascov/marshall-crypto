@@ -77,8 +77,8 @@ import Core
     init(networkService: NetworkServiceAPI = NetworkService()) {
         self.networkService = networkService
 
-        let currency = Currency(rawValue: UserDefaultsController.stringValue(for: .selectedCurrency) ?? "") ?? .usd
-        let sortOption = CryptoCurrencySortOption(rawValue: UserDefaultsController.stringValue(for: .sortOption) ?? "") ?? .name
+        let currency = Currency(rawValue: UserDefaultsController.stringValue(for: UserDefaultsKey.selectedCurrency) ?? "") ?? .usd
+        let sortOption = CryptoCurrencySortOption(rawValue: UserDefaultsController.stringValue(for: UserDefaultsKey.sortOption) ?? "") ?? .name
 
         self.selectedCurrency = currency
         self.sortOption = sortOption
@@ -171,11 +171,11 @@ private extension CryptoCurrenciesListViewModel {
 
     func updateSelectedCurrency() {
         selectedCurrency = shouldShowPricesInSEK ? .sek : .usd
-        UserDefaultsController.set(selectedCurrency.rawValue, forKey: .selectedCurrency)
+        UserDefaultsController.set(selectedCurrency.rawValue, forKey: UserDefaultsKey.selectedCurrency)
     }
 
     func updateSortOption() {
-        UserDefaultsController.set(sortOption.rawValue, forKey: .sortOption)
+        UserDefaultsController.set(sortOption.rawValue, forKey: UserDefaultsKey.sortOption)
     }
 
     func favoriteCryptoCurrencies(in profile: Profile?) -> [CryptoCurrency] {

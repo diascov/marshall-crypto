@@ -131,7 +131,7 @@ public extension CryptoCurrency {
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"),
                                          rank: 4,
                                          lastUpdated: Date(timeIntervalSince1970: 1732451256),
-                                         price: CryptoCurrency.Price(current: 100000.1, high: 101000.2, low: 99000.3, dailyChange: 0.00001234))
+                                         price: CryptoCurrency.Price(current: 100000.1, high: 101000.2, low: 99000.3, dailyChange: 0))
     static let preview1 = CryptoCurrency(id: "ethereum",
                                          name: "Ethereum",
                                          symbol: "eth",
@@ -159,6 +159,6 @@ public extension CryptoCurrency {
                                          imageURL: URL(string: "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"),
                                          rank: 0,
                                          lastUpdated: Date(),
-                                         price: CryptoCurrency.Price(current: 0.874021, high: 0.904909, low: 0.769145, dailyChange: 0.082679))
+                                         price: CryptoCurrency.Price(current: 0.874021, high: 0.904909, low: 0.769145, dailyChange: -0.082679))
 }
 #endif

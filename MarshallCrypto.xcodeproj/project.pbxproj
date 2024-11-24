@@ -91,6 +91,7 @@
 				724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */,
 				722201B62CE3EEAE00EED98C /* MarshallCrypto */,
 				72CEE62B2CF295C6001E9290 /* MarshallCryptoTests */,
+				72CEE63F2CF3BEA5001E9290 /* Frameworks */,
 				722201B52CE3EEAE00EED98C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,6 +103,13 @@
 				72CEE62A2CF295C6001E9290 /* MarshallCryptoTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		72CEE63F2CF3BEA5001E9290 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -7,16 +7,24 @@
 
 import Foundation
 
-public protocol Localizable {
+public protocol Localizable: CaseIterable {
     var rawValue: String { get }
+    var key: String.LocalizationValue { get }
+    var tableName: String { get }
     func localized(arguments: CVarArg...) -> String
 }
 
 public extension Localizable {
 
+    var key: String.LocalizationValue {
+        String.LocalizationValue(rawValue)
+    }
+
+    var tableName: String {
+        String(describing: type(of: self)).replacingOccurrences(of: "Strings", with: "")
+    }
+
     func localized(arguments: CVarArg...) -> String {
-        let key = String.LocalizationValue(rawValue)
-        let tableName = String(describing: type(of: self)).replacingOccurrences(of: "Strings", with: "")
         let format = String(localized: key, table: tableName, bundle: .module)
 
         return String(format: format, arguments: arguments)
