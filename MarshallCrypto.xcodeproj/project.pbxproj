@@ -14,6 +14,7 @@
 		724014C72CEF1F4800D8F0BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C62CEF1F4800D8F0BD /* FirebaseDatabase */; };
 		724014C92CEF1F4800D8F0BD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 724014C82CEF1F4800D8F0BD /* FirebaseFirestore */; };
 		724014CB2CEF1F4800D8F0BD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 724014CA2CEF1F4800D8F0BD /* FirebaseStorage */; };
+		724582A82CF474C900FD0931 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 724582A72CF474C900FD0931 /* README.md */; };
 		72CEE7162CF3CE2D001E9290 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 72CEE7152CF3CE2D001E9290 /* Core */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		722201B42CE3EEAE00EED98C /* MarshallCrypto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarshallCrypto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Marshall-Crypto-Info.plist"; sourceTree = "<group>"; };
+		724582A72CF474C900FD0931 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		72CEE62A2CF295C6001E9290 /* MarshallCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarshallCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +90,7 @@
 		722201AB2CE3EEAE00EED98C = {
 			isa = PBXGroup;
 			children = (
+				724582A72CF474C900FD0931 /* README.md */,
 				724014B92CEE9B6700D8F0BD /* Marshall-Crypto-Info.plist */,
 				722201B62CE3EEAE00EED98C /* MarshallCrypto */,
 				72CEE62B2CF295C6001E9290 /* MarshallCryptoTests */,
@@ -217,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724582A82CF474C900FD0931 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
