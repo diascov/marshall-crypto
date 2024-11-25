@@ -105,3 +105,6 @@ Unit testing covers key components:
 
 ## Code Owners  
 📧 **dmitrii.iascov@gmail.com**  
+
+## WARNING
+**API restrictions: Please be aware that the app uses limited public API that allows you to fetch up to 25 requests per day**
