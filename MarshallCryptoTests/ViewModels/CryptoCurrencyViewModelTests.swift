@@ -17,9 +17,15 @@ import Foundation
         let sut = setupSUT()
 
         #expect(sut.titleText == "BTC")
-        #expect(sut.lastUpdated == "Sunday, November 24, 2024 at 1:27 PM")
         #expect(sut.imageURL == URL(string: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"))
         #expect(sut.cryptoCurrencyID == "bitcoin")
+
+        if Locale.current.language.languageCode == "en" {
+            #expect(sut.lastUpdated == "Sunday, November 24, 2024 at 1:27 PM")
+        }
+        if Locale.current.language.languageCode == "sv" {
+            #expect(sut.lastUpdated == "söndag, november 24, 2024 at 1:27 em")
+        }
     }
 
     @Test("When switching currencies, prices should be updated", arguments: Currency.allCases)

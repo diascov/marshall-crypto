@@ -132,7 +132,7 @@ import UIKit
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .high) == "0,90 US$")
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .low) == "0,77 US$")
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .current) == "0,87 US$")
-        #expect(sut.price(cryptoCurrency: .preview4, priceType: .dailyChange) == "-0,08 US$")
+        #expect(sut.price(cryptoCurrency: .preview4, priceType: .dailyChange) == "−0,08 US$")
     }
 
     @Test("When passing crypto currency and price type, with SEK shouldShowPricesInSEK, it should show correct values in SEK")
@@ -162,7 +162,7 @@ import UIKit
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .high) == "9,93 kr")
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .low) == "8,44 kr")
         #expect(sut.price(cryptoCurrency: .preview4, priceType: .current) == "9,59 kr")
-        #expect(sut.price(cryptoCurrency: .preview4, priceType: .dailyChange) == "-0,91 kr")
+        #expect(sut.price(cryptoCurrency: .preview4, priceType: .dailyChange) == "−0,91 kr")
     }
 
     @Test("When selecting sort option, the list should be sorted accordingly", arguments: CryptoCurrenciesListViewModel.CryptoCurrencySortOption.allCases)

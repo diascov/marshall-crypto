@@ -22,8 +22,15 @@ struct DateFormatterTests {
 
     @Test("When given a Date, it should return formatted string")
     func isoString() {
-        #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732451256)) == "Sunday, November 24, 2024 at 1:27 PM")
-        #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732480279)) == "Sunday, November 24, 2024 at 9:31 PM")
-        #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 0)) == "Thursday, January 1, 1970 at 1:00 AM")
+        if Locale.current.language.languageCode == "en" {
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732451256)) == "Sunday, November 24, 2024 at 1:27 PM")
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732480279)) == "Sunday, November 24, 2024 at 9:31 PM")
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 0)) == "Thursday, January 1, 1970 at 1:00 AM")
+        }
+        if Locale.current.language.languageCode == "sv" {
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732451256)) == "söndag, november 24, 2024 at 1:27 em")
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 1732480279)) == "söndag, november 24, 2024 at 9:31 em")
+            #expect(DateFormatter.isoString(from: Date(timeIntervalSince1970: 0)) == "torsdag, januari 1, 1970 at 1:00 fm")
+        }
     }
 }

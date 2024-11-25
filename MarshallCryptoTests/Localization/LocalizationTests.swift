@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import Core
+@testable import MarshallCrypto
 
 struct LocalizationTests {
 
@@ -21,7 +21,7 @@ struct LocalizationTests {
 
     private func assertLocalization<T>(_ localization: T.Type, arguments: CVarArg...) where T : Localizable {
         localization.allCases.forEach {
-            let format = String(localized: $0.key, table: $0.tableName, bundle: .module)
+            let format = String(localized: $0.key, table: $0.tableName, bundle: .main)
             #expect($0.localized(arguments: arguments) == String(format: format, arguments: arguments))
         }
     }
